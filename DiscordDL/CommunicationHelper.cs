@@ -5,29 +5,28 @@ public class CommunicationHelper
     {
         PlayerList,
         GameStoreMoney,
+        Link,
     }
-    public struct ListData
+    public enum DataType
     {
-        public string SentStringData { get; set; }
-        public List<string> ReplyData { get; set; }
-
+        List,
+        Sring,
+        Link,
     }
-    public struct OutputList
+    public struct BotRequester
     {
         public RequestType Type { get; set; }
         public string Data { get; set; }
     }
-    public struct StringData
+    public struct PluginSender
     {
-        public string ReturnData { get; set; }
-        public string SentData { get; set; }
-
+        public DataType Type { get; set; }
+        public string Data { get; set; }
     }
-
-    public struct SentData
+    public struct Linker
     {
-        public RequestType Type { get; set; }
-        public StringData StringData { get; set; }
-        public ListData ListData { get; set; }
+        public ulong UserId { get; set; }
+        public int Code { get; set; }
+        public bool Linked { get; set; }
     }
 }

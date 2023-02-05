@@ -7,6 +7,7 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Interfaces;
 using GameStore;
+using MEC;
 using SimpleTCP;
 using YamlDotNet.Serialization;
 
@@ -28,12 +29,14 @@ public class Plugin : Plugin<Config>
         Instance = this;
         Server.Start(IPAddress.Any, 12345);
         Server.DataReceived += Communication.DataReceived;
+        Timing.RunCoroutine(LinkCommand.Timer());
 
     }
 
 
     public override void OnDisabled()
     {
+        Server.Stop();
     }
 
 
